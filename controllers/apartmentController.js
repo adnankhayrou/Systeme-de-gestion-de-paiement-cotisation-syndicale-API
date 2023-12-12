@@ -46,7 +46,19 @@ const getApartmentWithUserId = async (req, res) => {
     }
 };
 
-
+const deleteApartment = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deletedApartment = await Apartment.findByIdAndDelete(id);
+        if (!deletedApartment) {
+            return res.status(404).json({ error: "Apartment not found" });
+        }
+        res.json({success: "Apartment deleted successfully", deletedApartment});
+    } catch (e) {
+        console.log(e);
+        res.status(400).json({ error: "Something went wrong" });
+    }
+};
 
 
 
@@ -54,4 +66,5 @@ module.exports = {
     createNewApartment,
     getApartmentWithId,
     getApartmentWithUserId,
+    deleteApartment,
 };
