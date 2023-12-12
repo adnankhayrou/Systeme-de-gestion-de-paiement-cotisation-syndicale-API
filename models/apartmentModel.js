@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const schema = {
+    user_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+    },
     building_ID: {
         type: String,
         required: true,
@@ -18,7 +22,7 @@ const schema = {
         required: true,
     },
     resident_cin: {
-        type: Number,
+        type: String,
         required: true,
     },
     condition: {
