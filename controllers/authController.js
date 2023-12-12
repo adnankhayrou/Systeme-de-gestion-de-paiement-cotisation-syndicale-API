@@ -8,7 +8,6 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 
-
 async function register (req, res) {
     const {error} = authRequest.RegisterValidation(req.body);
     if (error) {
