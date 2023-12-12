@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const apartmentController = require('../controllers/apartmentController');
-// const isLogged = require('../middlewares/isLogged.meddleware');
 
 
 router.post('/createApartment', apartmentController.createNewApartment);
+router.get('/getApartment/:id', apartmentController.getApartmentWithId);
 
 module.exports = router;
