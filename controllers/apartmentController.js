@@ -60,11 +60,24 @@ const deleteApartment = async (req, res) => {
     }
 };
 
-
+const updateApartment = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const updatedApartment = await Apartment.findByIdAndUpdate(id, req.body);
+        if (!updatedApartment) {
+            return res.status(404).json({ error: "Apartment not found" });
+        }
+        res.json({success: "Apartment updated successfully", updatedApartment});
+    } catch (e) {
+        console.log(e);
+        res.status(400).json({ error: "Something went wrong" });
+    }
+};
 
 module.exports = {
     createNewApartment,
     getApartmentWithId,
     getApartmentWithUserId,
     deleteApartment,
+    updateApartment,
 };
