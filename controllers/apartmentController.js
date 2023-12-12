@@ -29,10 +29,29 @@ const getApartmentWithId = async (req, res) => {
     }
 };
 
+const getApartmentWithUserId = async (req, res) => {
+    const { user_id } = req.params;
+
+    try {
+        const apartments = await Apartment.find({ user_id: user_id });
+
+        if (apartments.length === 0) {
+            return res.status(404).json({ error: "No apartments found for this user" });
+        }
+
+        res.json({ success: "Apartments found successfully", apartments });
+    } catch (e) {
+        console.error(e);
+        res.status(500).json({ error: "Something went wrong" });
+    }
+};
+
+
 
 
 
 module.exports = {
     createNewApartment,
     getApartmentWithId,
+    getApartmentWithUserId,
 };
