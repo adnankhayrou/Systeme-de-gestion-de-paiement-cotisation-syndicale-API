@@ -1,6 +1,7 @@
 const Apartment = require("../models/apartmentModel");
 
 const createNewApartment = async (req, res) => {
+    console.log('here',req.body);
     try {
         const check = await Apartment.find({resident_cin: req.body.resident_cin})
         if (check.length > 0) {

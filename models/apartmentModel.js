@@ -19,7 +19,7 @@ const schema = {
         required: true,
     },
     resident_phone: {
-        type: Number,
+        type: String,
         required: true,
     },
     resident_cin: {
