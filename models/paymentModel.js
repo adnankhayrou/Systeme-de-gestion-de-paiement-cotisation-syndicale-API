@@ -11,7 +11,7 @@ const paymentSchema = new mongoose.Schema({
         required: true,
         enum: ["paid", "unpaid"],
     },
-    apartment_id: {
+    apartment: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Apartment",
         required: true,
