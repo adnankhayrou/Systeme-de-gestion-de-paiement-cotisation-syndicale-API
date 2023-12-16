@@ -3,7 +3,6 @@ const Apartment = require("../models/apartmentModel");
 
 
 const createNewPayment = async (req, res) => {
-    console.log('here',req.body);
     try {
         const today = new Date();
         const month = today.getMonth()+1;
@@ -20,14 +19,13 @@ const createNewPayment = async (req, res) => {
 
 const getAllPayments = async (req, res) => {
     const { user_id } = req.params;
-    console.log(user_id);
     try {
         const apartments = await Apartment.find({ user_id: user_id });
-        console.log(apartments);
         const today = new Date();
         const month = today.getMonth() + 1;
         const year = today.getFullYear();
         
+
         const AlreadyPaidApartments = await Payment.find({user_id: user_id, month,year,
             apartment: { $in: apartments.map((apartment) => apartment._id) },
         }).populate("apartment");
@@ -45,7 +43,22 @@ const getAllPayments = async (req, res) => {
 };
 
 
+const getResidentPayment = async (req, res) => {
+    const { payment_id } = req.params;
+    try {
+        const residentPayment = await Payment.find({_id: payment_id
+        }).populate("apartment");
+
+        res.json({ residentPayment });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error });
+    }
+};
+
+
 module.exports = {
     createNewPayment,
     getAllPayments,
+    getResidentPayment
 };

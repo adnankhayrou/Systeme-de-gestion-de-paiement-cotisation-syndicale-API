@@ -35,7 +35,7 @@ const options = {
         }
       ]
     },
-    apis: ['routes/authRoutes.js'],
+    apis: ['routes/authRoutes.js', 'routes/apartmentRoutes.js', 'routes/paymentRoutes.js'],
   };
 const specs = swaggerJsdoc(options);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
