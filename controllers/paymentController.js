@@ -26,7 +26,7 @@ const getAllPayments = async (req, res) => {
         const year = today.getFullYear();
         
 
-        const AlreadyPaidApartments = await Payment.find({user_id: user_id, month,year,
+        const AlreadyPaidApartments = await Payment.find({user_id: user_id, month, year,
             apartment: { $in: apartments.map((apartment) => apartment._id) },
         }).populate("apartment");
         
