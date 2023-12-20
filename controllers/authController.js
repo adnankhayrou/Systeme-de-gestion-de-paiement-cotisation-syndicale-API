@@ -74,7 +74,6 @@ async function register (req, res) {
 
 }
 
-
 async function verifyEmail (req, res) {
     const token = req.params.token;
     if(!token) return res.status(401).json({ error: `Don't have access` });
@@ -95,7 +94,6 @@ async function verifyEmail (req, res) {
     }
 
 }
-
 
 async function login(req, res){
     const {error} = authRequest.LoginValidation(req.body);
@@ -206,7 +204,6 @@ async function resetPassword(req, res) {
         return res.status(400).json({ error: "Something Went Wrong" });
     }
 }
-
 
 async function getUser(req, res){
     const user = await userModel.findOne(
