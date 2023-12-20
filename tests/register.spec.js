@@ -1,6 +1,4 @@
 const register = require('../controllers/authController').register;
-
-// Mock dependencies
 const { authRequest } = require('../requests/auth.request');
 const userModel = require('../models/userModel'); 
 const bcryptjs = require('bcryptjs');

@@ -2,7 +2,6 @@ const logout = require('../controllers/authController').logout;
 
 describe('logout function', () => {
   it('clears the authToken cookie and responds with success', () => {
-    // Create mock request and response objects
     const req = {};
     const res = {
       clearCookie: jest.fn(),
